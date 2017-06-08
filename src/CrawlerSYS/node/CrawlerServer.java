@@ -6,6 +6,8 @@ import java.net.ServerSocket;
 
 import org.apache.log4j.Logger;
 
+import CrawlerSYS.crawler.DefaultConfig;
+
 public class CrawlerServer extends Thread{
 	private ServerSocket server = null;
 	private Logger logger = Logger.getLogger(CrawlerServer.class);  
@@ -28,7 +30,7 @@ e.printStackTrace();logger.error("Exception",e);
 		}
 	}
 	public CrawlerServer() {
-		this(6543);
+		this(DefaultConfig.serverPort);
 	}
 	public void run() {
 		while(!server.isClosed()){
