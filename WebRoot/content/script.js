@@ -35,10 +35,10 @@ function getUrl(url){
 }
 
 function openUrl(url){
-    if($("#proxy").val){
+    if($('#proxy').bootstrapSwitch('state')){
     	$("#brower").load("CrawlerServlet?method=get&url="+getUrl(url));
-    	if($("#banJs").val)
-    		$("#brower").find("script").remove();
+//    	if($("#banJs").val)
+//    		$("#brower").find("script").remove();
     }else
     	$("#brower").empty().append($("<div class=\"embed-responsive embed-responsive-4by3\"><iframe id=\"brower\" class=\"embed-responsive-item\" src="+url+"></iframe></div>"));
 }
@@ -81,8 +81,7 @@ function collectData(){
 		if(t.length>0)
 			json.urls[i]={"url":t};
 		else if(i==1)
-			if($("#setting-auto").val()!=true)
-				err+="url 不可为空\n";
+			err+="url 不可为空\n";
 	});
 	$(".input-group-xpath").children().find('input').each(function (i){
 		if(i%2==0){
@@ -109,8 +108,8 @@ function collectData(){
 	t = $("#setting-sleep").val();
 	if(t.length>0)
 		json.sleep=t;
-	if($("#setting-save").val()=='true'||$("#setting-auto").val()=='true'){
-		alert("#setting-save"+$("#setting-save").val());
+	if($("#setting-save").bootstrapSwitch('state')||$("#setting-auto").bootstrapSwitch('state')){
+//		alert("#setting-save"+$("#setting-save").val());
 		t=$("#setting-dbip").val();
 		if(t.length>0)
 			json.dbip=t;
@@ -128,14 +127,14 @@ function collectData(){
 			json.table=t;
 		else err+="table 不可为空\n";
 	}
-	if($("#setting-auto").val()=='true'){
+	if($("#setting-auto").bootstrapSwitch('state')){
 //		alert("#setting-auto"+$("#setting-auto").val());
 		json.then="auto";
 	}
 	else
-		if($("#setting-save").val()=='true')
+		if($("#setting-save").bootstrapSwitch('state'))
 			json.then=$("#setting-then").val();
-	if($("#setting-recur").val()=='true'){
+	if($("#setting-recur").bootstrapSwitch('state')){
 //		alert("#setting-recur"+$("#setting-recur").val());
 		json.relink=true;
 		t=$("#setting-link").val();
