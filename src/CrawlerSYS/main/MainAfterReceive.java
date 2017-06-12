@@ -30,8 +30,8 @@ public class MainAfterReceive extends Thread{
 		String fn = (String) j.get("finish");
 		if(fn==null)
 			return;
-		if(nc.getConn()!=null)
-			nc.getConn().send("{\"ip\":\""+fn+"\",\"finsh\":true}");
+//		if(nc.getConn()!=null)
+//			nc.getConn().send("{\"ip\":\""+fn+"\",\"finsh\":true}");
 		String[] link = (String[]) j.get("link");
 		if (link!=null) {
 			for (int i = 0; i < link.length; i++) {
@@ -119,8 +119,11 @@ e.printStackTrace();logger.error("Exception",e);
 //			System.out.println(res);
 //		}
 		nc.setSend(nc.getSend()-1);
-		if(nc.getSend()==0)
+		if(nc.getSend()==0){
 			nc.over();
+			if(nc.getConn()!=null)
+				nc.getConn().send("{\"ip\":\""+fn+"\",\"finsh\":true}");
+		}
 		
 	}
 }

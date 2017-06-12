@@ -38,7 +38,7 @@ public class WebSocket extends WebSocketServer {
 		System.out.println(message);
 		if(message!=null){
 			List<String> url =(List<String>) JSONPath.read(message,"$.urls.url");
-			System.out.println(url);
+//			System.out.println(url);
 			List<String> node =(List<String>) JSONPath.read(message,"$.nodes.node");
 			String then = (String)JSONPath.read(message,"$.then");
 			List<String> xpath = null ;
@@ -71,7 +71,8 @@ public class WebSocket extends WebSocketServer {
 //			t = (Boolean) JSONPath.read(message,"$.relink");
 			boolean relink=false;
 //			if(t!=null)
-			relink = (Boolean) JSONPath.read(message,"$.relink");
+			if(JSONPath.read(message,"$.relink")!=null)
+				relink = (Boolean) JSONPath.read(message,"$.relink");
 			n.setRelink(relink);
 			t = (String) JSONPath.read(message,"$.stime");
 			if(t!=null)

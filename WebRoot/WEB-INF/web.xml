@@ -5,7 +5,7 @@
     <servlet-name>CrawlerServlet</servlet-name>
     <servlet-class>servlet.CrawlerServlet</servlet-class>
     <init-param>  
-        <param-name>log4j-properties-location</param-name>  
+        <param-name>log4j</param-name>  
         <param-value>\WEB-INF\classes\log4j.properties</param-value>  
     </init-param>  
     <load-on-startup>1</load-on-startup>

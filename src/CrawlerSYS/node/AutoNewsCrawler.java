@@ -27,7 +27,7 @@ import CrawlerSYS.entity.CrawlerReturnEntity;
 import CrawlerSYS.utils.StringHelper;
 import CrawlerSYS.utils.WebCrawler;
 
-public class AutoNewsCrawler  implements Callable{
+public class AutoNewsCrawler  implements Callable<CrawlerReturnEntity>{
 	
 	private boolean rtLink = false;
 	private int sleepTime = 500;
@@ -41,7 +41,7 @@ public class AutoNewsCrawler  implements Callable{
 	}
 	
 	@Override
-	public Object call() throws Exception {
+	public CrawlerReturnEntity call() throws Exception {
 //		List<String> res = new ArrayList<String>();
 		String[] lable = new String[]{"url","title","content"},res = new String[3];
 		res[0]=url;

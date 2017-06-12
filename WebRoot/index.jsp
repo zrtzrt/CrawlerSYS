@@ -32,7 +32,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
     		<span style="color: #66FF99">S</span>
     		<span style="color: #99FFCC">Y</span>
     		<span style="color: #66FF99">S</span>
-    		<span style="color: #CC66CC">V0.2.1</span>
+    		<span style="color: #CC66CC">V0.2.3</span>
     		<span style="color: #CC6666">BATE</span>
     	</h1>
 	</div>

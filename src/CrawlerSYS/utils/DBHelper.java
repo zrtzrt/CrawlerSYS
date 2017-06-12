@@ -9,6 +9,8 @@ import java.sql.Statement;
 
 import org.apache.log4j.Logger;
 
+import CrawlerSYS.crawler.DefaultConfig;
+
 
 public class DBHelper {
 	/*
@@ -16,7 +18,7 @@ public class DBHelper {
 	 * 其中1-3步在DBConnection中，4-6在DAO层中
 	 */
 	private static String mySqlDriver="com.mysql.jdbc.Driver";
-	private static String url = "jdbc:mysql://127.0.0.1:3306/showinfo?useUnicode=true&characterEncoding=UTF-8";
+	private static String url = "jdbc:mysql://"+DefaultConfig.dbip+"?"+DefaultConfig.dbArgs;
 //	private static String url = "jdbc:mysql://119.29.223.149:3306/heatpoint?useUnicode=true&characterEncoding=UTF-8";
 	public static Connection conn=null;
 	public static PreparedStatement ps = null; 

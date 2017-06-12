@@ -1,30 +1,16 @@
 package servlet;
 
-import java.io.File;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.net.UnknownHostException;
 import java.util.Map;
 import java.util.HashMap;
-//import java.util.ArrayList;
-//import java.util.Arrays;
-//import java.util.Date;
-//import java.util.Enumeration;
-//import java.util.LinkedHashSet;
-//import java.util.List;
-//import java.util.concurrent.ExecutionException;
-//import java.util.concurrent.ExecutorService;
-//import java.util.concurrent.Executors;
-//import java.util.concurrent.Future;
 
-import javax.servlet.ServletConfig;
-import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import org.apache.log4j.BasicConfigurator;
 import org.apache.log4j.PropertyConfigurator;
 
 import CrawlerSYS.crawler.DefaultConfig;
@@ -32,6 +18,12 @@ import CrawlerSYS.node.CrawlerServer;
 import CrawlerSYS.utils.WebCrawler;
 
 public class CrawlerServlet extends HttpServlet {
+
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+
 
 	/**
 	 * Constructor of the object.
@@ -211,35 +203,39 @@ public class CrawlerServlet extends HttpServlet {
 	}
 
 	
-	public void init(ServletConfig config) throws ServletException {  
-        System.out.println("Log4JInitServlet 正在初始化 log4j日志设置信息");  
-        String log4jLocation = config.getInitParameter("log4j-properties-location");  
-
-        ServletContext sc = config.getServletContext();  
-
-        if (log4jLocation == null) {  
-            System.err.println("*** 没有 log4j-properties-location 初始化的文件, 所以使用 BasicConfigurator初始化");  
-            BasicConfigurator.configure();  
-        } else {  
-            String webAppPath = sc.getRealPath("/");  
-            String log4jProp = webAppPath + log4jLocation;  
-            File yoMamaYesThisSaysYoMama = new File(log4jProp);  
-            if (yoMamaYesThisSaysYoMama.exists()) {  
-                System.out.println("使用: " + log4jProp+"初始化日志设置信息");  
-                PropertyConfigurator.configure(log4jProp);  
-            } else {  
-                System.err.println("*** " + log4jProp + " 文件没有找到， 所以使用 BasicConfigurator初始化");  
-                BasicConfigurator.configure();  
-            }  
-        }  
-        super.init(config);  
-    }  
+//	public void init(ServletConfig config) throws ServletException {  
+//        System.out.println("Log4JInitServlet 正在初始化 log4j日志设置信息");  
+//        String log4jLocation = config.getInitParameter("log4j-properties-location");  
+//
+//        ServletContext sc = config.getServletContext();  
+//
+//        if (log4jLocation == null) {  
+//            System.err.println("*** 没有 log4j-properties-location 初始化的文件, 所以使用 BasicConfigurator初始化");  
+//            BasicConfigurator.configure();  
+//        } else {  
+//        	String log4jProp = sc.getRealPath(log4jLocation); 
+//            File yoMamaYesThisSaysYoMama = new File(log4jProp);  
+//            if (yoMamaYesThisSaysYoMama.exists()) {  
+//                System.out.println("使用: " + log4jProp+"初始化日志设置信息");  
+//                PropertyConfigurator.configure(log4jProp);  
+//            } else {  
+//                System.err.println("*** " + log4jProp + " 文件没有找到， 所以使用 BasicConfigurator初始化");  
+//                BasicConfigurator.configure();  
+//            }  
+//        }  
+//        super.init(config);  
+//    }  
 	/**
 	 * Initialization of the servlet. <br>
 	 *
 	 * @throws ServletException if an error occurs
 	 */
 	public void init() throws ServletException {
+		String file = this.getServletContext().getRealPath(this.getInitParameter("log4j"));
+		//从web.xml配置读取，名字一定要和web.xml配置一致
+		  if(file != null){
+		     PropertyConfigurator.configure(file);
+		  }
 		// Put your code here
 		new CrawlerServer(DefaultConfig.serverPort).start();
 		try {

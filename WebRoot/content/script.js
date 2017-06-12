@@ -29,7 +29,7 @@ $("#brower").on("click",function(e) {
 }
 
 function getUrl(url){
-	var re = new RegExp("^((https|http)?://){1}")
+	var re = new RegExp("^((https|http)?://){1}");
 	url = re.test(url)?url:"http://"+url;
 	return url;
 }
@@ -95,6 +95,8 @@ function collectData(){
 //		}else json.lables[(i-1)/2].lable = $(this).val();
 	});
 	$(".input-group-node").children().find('input').each(function (i){
+		if($(this).val().lenght==0)
+			err+="node 不可为空\n";
 		json.nodes[i] = {"node":$(this).val()};
 //		json.nodes[i].node = $(this).val();
 	});
@@ -107,8 +109,8 @@ function collectData(){
 	t = $("#setting-sleep").val();
 	if(t.length>0)
 		json.sleep=t;
-	if($("#setting-save").val()){
-//		alert("#setting-save"+$("#setting-save").val());
+	if($("#setting-save").val()=='true'||$("#setting-auto").val()=='true'){
+		alert("#setting-save"+$("#setting-save").val());
 		t=$("#setting-dbip").val();
 		if(t.length>0)
 			json.dbip=t;
@@ -125,16 +127,15 @@ function collectData(){
 		if(t.length>0)
 			json.table=t;
 		else err+="table 不可为空\n";
-		
 	}
-	if($("#setting-auto").val()){
+	if($("#setting-auto").val()=='true'){
 //		alert("#setting-auto"+$("#setting-auto").val());
 		json.then="auto";
 	}
 	else
-		if($("#setting-save").val())
+		if($("#setting-save").val()=='true')
 			json.then=$("#setting-then").val();
-	if($("#setting-recur").val()){
+	if($("#setting-recur").val()=='true'){
 //		alert("#setting-recur"+$("#setting-recur").val());
 		json.relink=true;
 		t=$("#setting-link").val();
@@ -254,7 +255,7 @@ function showMessage(msg){
 				var bar = $("<div class='progress'></div>");
 				var finsh = $("<div id='doneber-"+m.ip+
 						"' class='progress-bar progress-bar-striped active' role='progressbar' style='width:"
-						+m.done+"'>"+m.done+"</div>");
+						+m.done+"%'>"+m.done+"%</div>");
 				bar.append(finsh);
 				li.append(head).append(bar);
 				$("#console-list").append(li);

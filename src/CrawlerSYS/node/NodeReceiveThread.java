@@ -63,6 +63,7 @@ e.printStackTrace();logger.error("Exception",e);
 			if(m!=null){
 				if (((String) m.get("method")).equalsIgnoreCase("end")) {
 					ds.close();
+					pool.shutdownNow();
 					try {
 						System.out.println("node shutdown");
 						logger.info("node shutdown");
