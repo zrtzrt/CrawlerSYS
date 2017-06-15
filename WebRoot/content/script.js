@@ -40,7 +40,7 @@ function openUrl(url){
 //    	if($("#banJs").val)
 //    		$("#brower").find("script").remove();
     }else
-    	$("#brower").empty().append($("<div class=\"embed-responsive embed-responsive-4by3\"><iframe id=\"brower\" class=\"embed-responsive-item\" src="+url+"></iframe></div>"));
+    	$("#brower").empty().append($("<div class=\"embed-responsive embed-responsive-4by3\"><iframe class=\"embed-responsive-item\" src="+url+"></iframe></div>"));
 }
 
 function testCon(url,d) {

@@ -17,7 +17,7 @@ body,div,h1{
 	display:inline;float:right;overflow:hidden;
 }
 #brower{
-	overflow-y:auto;height:85%;zoom:65%;overflow:hidden;
+	overflow-y:auto;height:85%;zoom:65%;
 }
 #console{
 	overflow-y:auto;height:85%;

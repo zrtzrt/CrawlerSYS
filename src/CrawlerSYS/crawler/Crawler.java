@@ -35,6 +35,11 @@ public class Crawler {
 		this(url,new ArrayList<String>(xpath.values()));
 		nc.setLable(xpath.keySet().toArray(new String[xpath.size()]));
 	}
+	public Crawler(List<String> url, String urlRegex, int limit) {
+		super();
+		String[] node = DefaultConfig.node;
+		nc = new MainNodeControler(url,urlRegex,limit,node);
+	}
 	public void run(){
 		nc.run();
 		while(!nc.isOver()){

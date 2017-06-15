@@ -23,11 +23,12 @@ public class MainNodeControler implements Runnable{
 	private boolean relink,isOver = false;
 	private int urlLimit=DefaultConfig.urlLimit,thread=DefaultConfig.thread,
 			allLimit=DefaultConfig.allLimit,sleeptime=DefaultConfig.sleepTime;
-	private String then = DefaultConfig.then,table,dbip,linkpath,user,pwd,dispose;
+	private String then = DefaultConfig.then,table,dbip,linkpath,user,pwd,dispose,autoR="http.+";
 	private String[] node = DefaultConfig.node, lable;
 	private Map<String,String> header = null,cookie = null;
 	private List<String> urlRegex = new ArrayList<String>();
 	private List<List<String>> xpath = new ArrayList<List<String>>();
+	
 	
 	private int indexOfNode=0,send;
 	private long startTime;
@@ -41,6 +42,20 @@ public class MainNodeControler implements Runnable{
 	private List<List<String>> res;
 	private Logger logger = Logger.getLogger(MainNodeControler.class);
 	
+	public MainNodeControler(List<String> url, String urlRegex, int limit, String[] node){
+		for (int i = 0; i < url.size(); i++) {
+			this.url.add(url.get(i).toLowerCase());
+		}
+		setNode(node);
+		sumUrl = new int[node.length];
+		outList = new ObjectOutputStream[node.length];
+		inList = new ObjectInputStream[node.length];
+		sList = new Socket[node.length];
+		autoR = urlRegex;
+		then = "auto";
+		allLimit = limit;
+		logger.info("new MainNodeControler("+url+",auto,"+urlRegex+","+limit+","+node[0]+")");
+	}
 	public MainNodeControler(List<String> url, List<String> xpath, String[] node){
 		for (int i = 0; i < url.size(); i++) {
 			this.url.add(url.get(i).toLowerCase());
@@ -68,6 +83,7 @@ public class MainNodeControler implements Runnable{
 		outList = new ObjectOutputStream[node.length];
 		inList = new ObjectInputStream[node.length];
 		sList = new Socket[node.length];
+		logger.info("new MainNodeControler("+url+","+xpath+","+node[0]+")");
 //		System.out.println("new MainNodeControler("+url+","+xpath+","+node+")");
 	}
 	public void run() {
@@ -100,6 +116,12 @@ public class MainNodeControler implements Runnable{
 			System.err.println("out of node list");
 			logger.error("out of node list");
 			return;
+		}
+		if(then.contains("auto")){
+			for (int j = 0; j < url.length; j++) {
+				if(!url[j].matches(autoR))
+					return;
+			}
 		}
 		send++;
 //		sumUrl[i]+=url.length;
@@ -244,6 +266,12 @@ e.printStackTrace();logger.error("Exception",e);
 	}
 	public void setUrl(LinkedHashSet<String> url) {
 		this.url = url;
+	}
+	public String getAutoR() {
+		return autoR;
+	}
+	public void setAutoR(String autoR) {
+		this.autoR = autoR;
 	}
 	public Map<String, String> getHeader() {
 		return header;

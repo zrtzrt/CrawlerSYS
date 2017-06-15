@@ -29,7 +29,7 @@ public class DBHelper {
 	public static Connection getConn(){
 		try{
 		   	 Class.forName(mySqlDriver).newInstance();//1 加载驱动 
-		   	 conn= DriverManager.getConnection(url, "root", "root");
+		   	conn= DriverManager.getConnection(url, DefaultConfig.user, DefaultConfig.password);
 //		   	 conn= DriverManager.getConnection(url, "root", "ig8ZZezcPjCE");
 		   	System.out.println("数据库连接成功！");
 		}catch(Exception e){

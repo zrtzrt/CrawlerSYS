@@ -1,10 +1,10 @@
 package CrawlerSYS.crawler;
 
 public class DefaultConfig {
-	public static final String dbip = "127.0.0.1:3306/test";
+	public static final String dbip = "127.0.0.1:3306/crawler";
 	public static final String dbArgs = "useUnicode=true&characterEncoding=UTF-8";
 	public static final String user = "root";
-	public static final String password = "root";
+	public static final String password = "BJkhORwf6Nmd";
 	public static final String then = "show";
 	public static final int urlLimit = 15;
 	public static final int thread = 5;
