@@ -38,14 +38,14 @@ Light-weight High-performance Reliable Smart Distributed Crawler System [preview
 ```java
 List<String> xpath = new ArrayList<String>();  xpath.add("//a/@href");
 List<String> url = new ArrayList<String>();  url.add("https://www.github.com");
-new Crawler(url,xpath).run();
+new Crawler(url,xpath).run();   //get data by xpath
 ```
 
-or
+
 
 ```java
 List<String> url = new ArrayList<String>();  url.add("https://www.github.com");
-new Crawler(url,"http.+",1000).run();
+new Crawler(url,"http.+",1000).run();  //automatic get title and content
 ```
 
 ## Thanks
@@ -63,7 +63,7 @@ Create new crawler by List of url and xpath.
 #### Crawler(List\<String\> url, Map\<String,String\> xpath)		Crawler
 Create new crawler by List of url and Map of lable(key),xpath(value).
 #### Crawler(List\<String\> url, String urlRegex, int limit)		Crawler	
-Create new auto crawler by List of url. Use urlRegex to limit url type.It will get title and context automatic without xpath.
+Create new auto crawler by List of url. Use urlRegex to limit url type.It will get title and content automatic without xpath.
 #### run() 	void
 Start running in this thread. It will wait until all node finished.
 #### start() 	void
@@ -120,7 +120,7 @@ Return org.jsoup.Connection for next step.
 Send http request without response.
 #### WebCrawler.get(String url, Map\<String,String\> header, String encode)	String
 Get json from http request.
-#### WebCrawler.getByXpath(Document doc, String[] xpath, int sleepTime)		List<List<String>>
+#### WebCrawler.getByXpath(Document doc, String[] xpath, int sleepTime)		List\<List\<String\>\>
 Extraction data by xpath from Document.
 #### WebCrawler.ignoreSsl()		void
 Ignore SSL certificate.To avoid Validation failure.
