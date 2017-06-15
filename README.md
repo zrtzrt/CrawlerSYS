@@ -58,11 +58,11 @@ This project dependent on several Open source project
 
 ### Common 
 
-#### Crawler(List<String> url, List<String> xpath)	Crawler
+#### Crawler(List\<String\> url, List\<String\> xpath)	Crawler
 Create new crawler by List of url and xpath.
-#### Crawler(List<String> url, Map<String,String> xpath)		Crawler
+#### Crawler(List\<String\> url, Map\<String,String\> xpath)		Crawler
 Create new crawler by List of url and Map of lable(key),xpath(value).
-#### Crawler(List<String> url, String urlRegex, int limit)		Crawler	
+#### Crawler(List\<String\> url, String urlRegex, int limit)		Crawler	
 Create new auto crawler by List of url. Use urlRegex to limit url type.It will get title and context automatic without xpath.
 #### run() 	void
 Start running in this thread. It will wait until all node finished.
@@ -74,7 +74,7 @@ Run in several hours.
 Run in fixed time like 12:00:00. Format: "HH:mm:ss"
 #### distributed(String[] node)	Crawler
 Add node. Default: "127.0.0.1:6543". Format: "ip : port".
-#### exception(String urlRegex, List<String> xpath)		Crawler
+#### exception(String urlRegex, List\<String\> xpath)		Crawler
 Select special url and dispose with special xpath.
 #### save(boolean asList, String table, String[] lable)		Crawler
 Data persistence. Save to your database (mysql).If asList is false only first date pre xpath.
@@ -94,14 +94,14 @@ If you want to processing acquired data or use your own way to save date.you can
 <br />
   
 ### Less common
-#### exceptions(String[] urlRegex, List<List<String>> xpath)	Crawler
+#### exceptions(String[] urlRegex, List\<List\<String\>\> xpath)	Crawler
 Add several exceptions at one times.
-#### header(Map<String,String> header)	Crawler
+#### header(Map\<String,String\> header)	Crawler
 Add unify header for any url. Default:{"User-Agent", "Mozilla/4.0 (compatible; MSIE 5.0; Windows NT; DigExt)"}
-#### cookie(Map<String,String> cookie)		Crawler
+#### cookie(Map\<String,String\> cookie)		Crawler
 Add unify cookie for any url.
-#### header(List<String> key,List<String> val)	Crawler
-#### cookie(List<String> key,List<String> val)	Crawler
+#### header(List\<String\> key,List\<String\> val)	Crawler
+#### cookie(List\<String\> key,List\<String\> val)	Crawler
 #### recursion(String linkpath)	Crawler
 If you use it without limit.It will never over.
 #### jdbc(String ip,int port,String dbName,String user,String pw)	Crawler
@@ -114,11 +114,11 @@ Default: 6543
  <br />
  
 ### Static
-#### WebCrawler.getConnect(String url, Map<String,String> header, Map<String,String> cookie)		Connection
+#### WebCrawler.getConnect(String url, Map\<String,String\> header, Map\<String,String\> cookie)		Connection
 Return org.jsoup.Connection for next step.
 #### WebCrawler.send(String url)		void
 Send http request without response.
-#### WebCrawler.get(String url, Map<String,String> header, String encode)	String
+#### WebCrawler.get(String url, Map\<String,String\> header, String encode)	String
 Get json from http request.
 #### WebCrawler.getByXpath(Document doc, String[] xpath, int sleepTime)		List<List<String>>
 Extraction data by xpath from Document.
@@ -128,7 +128,7 @@ Ignore SSL certificate.To avoid Validation failure.
 Same as Integer.parseInt(String s) but more smart.
 #### similarity(String str1,String str2)		double
 Return similarity between two String.
-#### StringHelper.similarity(List<String> strList,String str,double filter)		String
+#### StringHelper.similarity(List\<String\> strList,String str,double filter)		String
 Return most similar String in List.If less than filter return 0.
 #### StringHelper.sqlCREATE(String table,String[] lable,int[] length)		String
 #### StringHelper.sqlSELECT(String table,String[] lable,String[] condition)	String
