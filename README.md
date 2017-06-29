@@ -2,7 +2,7 @@
 
 Light-weight High-performance Reliable Smart Distributed Crawler System [preview](http://cloudforwork.cn/crawler)  [中文文档](https://github.com/zrtzrt/CrawlerSYS/raw/master/docs/CrawlerSYS%E8%AE%BE%E8%AE%A1%E6%96%87%E6%A1%A3.docx)
 <br /><br />
-![crawlerPage](https://raw.githubusercontent.com/zrtzrt/CrawlerSYS/master/docs/img/crawler.JPG)
+[![crawlerPage](https://raw.githubusercontent.com/zrtzrt/CrawlerSYS/master/docs/img/crawler.JPG)](http://cloudforwork.cn/crawler)
 
 ### describe
 - #### Light-weight
