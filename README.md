@@ -16,12 +16,9 @@ Light-weight High-performance Reliable Smart Distributed Crawler System [preview
 
   it's very fast. Because using HikariCP it can access database very fast.
 
-   I crawler [damai](https://www.damai.cn/) all date using 10 thread working on 4Mbps network take me less than 30s.  
+   I crawler [damai](https://www.damai.cn/) all date using 10 thread working on 4Mbps network take me less than 30s.
    
-    <video id="video" controls="" preload="none" poster="https://raw.githubusercontent.com/zrtzrt/CrawlerSYS/master/docs/img/crawler.JPG">
-      <source id="mp4" src="https://github.com/zrtzrt/CrawlerSYS/raw/master/docs/video/CrawlerSYS%20damai.mp4" type="video/mp4">
-      <p>[video](https://github.com/zrtzrt/CrawlerSYS/raw/master/docs/video/CrawlerSYS%20damai.mp4)</p>
-    </video>  
+    <video controls><sourc src="https://github.com/zrtzrt/CrawlerSYS/raw/master/docs/video/CrawlerSYS%20damai.mp4" type="video/mp4"></video> 
     
 - #### Reliable
 
