@@ -29,8 +29,8 @@ public class NodeReceiveThread extends Thread{
 		try {
 			sk.setSendBufferSize(1024*1024);
 			sk.setReceiveBufferSize(1024*1024);
-			in = new ObjectInputStream(sk.getInputStream());
 			out = new ObjectOutputStream(sk.getOutputStream());
+			in = new ObjectInputStream(sk.getInputStream());
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 e.printStackTrace();logger.error("Exception",e);
