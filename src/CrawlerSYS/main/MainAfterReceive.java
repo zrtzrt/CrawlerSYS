@@ -36,7 +36,7 @@ public class MainAfterReceive extends Thread{
 		if (link!=null) {
 			for (int i = 0; i < link.length; i++) {
 				if (!nc.getBan().contains(link[i])&&nc.getUrl().add(link[i].trim())&&nc.getUrl().size()<=nc.getAllLimit()){
-					nc.getNewUrl().add(link[i].trim().toLowerCase());
+					nc.getNewUrl().add(link[i].trim());
 				}else{
 					if(nc.getUrl().size()>=nc.getAllLimit()){
 						nc.setRelink(false);
